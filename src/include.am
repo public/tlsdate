@@ -13,14 +13,16 @@ src_tlsdate_routeup_SOURCES = src/routeup.c
 src_tlsdate_routeup_SOURCES+= src/util.c
 
 src_tlsdate_SOURCES = src/tlsdate.c
+src_tlsdate_LDADD = $(CAPNG_LDADD)
 
 src_tlsdate_helper_LDADD = -lssl -lcrypto
-src_tlsdate_helper_LDADD+= src/compat/libtlsdate_compat.la
+src_tlsdate_helper_LDADD+= src/compat/libtlsdate_compat.la $(CAPNG_LDADD)
 src_tlsdate_helper_SOURCES = src/tlsdate-helper.c
 src_tlsdate_helper_SOURCES+= src/proxy-bio.c
 src_tlsdate_helper_SOURCES+= src/util.c
 
 src_tlsdated_CFLAGS = -DTLSDATED_MAIN
+src_tlsdated_LDADD = $(CAPNG_LDADD)
 src_tlsdated_SOURCES = src/routeup.c
 src_tlsdated_SOURCES+= src/tlsdated.c
 src_tlsdated_SOURCES+= src/util.c
